@@ -20,4 +20,11 @@ node_modules/
 .eslintcache
 
 # build / generate output
-dist
+bin/**/*.js
+bin/**/*.d.ts
+bin/**/*.js.map
+bin/**/*d.ts.map
+lib/**/*.js
+lib/**/*.d.ts
+lib/**/*.js.map
+lib/**/*d.ts.map
