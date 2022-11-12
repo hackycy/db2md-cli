@@ -3,10 +3,13 @@
   "version": "0.0.1",
   "description": "sql to markdown tool",
   "bin": {
-    "db2md": "./bin/cli.js"
+    "db2md": "bin/cli.js"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node bin/cli.js",
+    "lint": "eslint {lib,bin}/**/*.ts --fix",
+    "clean": "rimraf {lib,bin}/**/*.{js,d.ts,js.map,d.ts.map}"
   },
   "keywords": [
     "cli",
@@ -24,7 +27,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
-    "tsconfig-paths": "^4.1.0",
+    "rimraf": "^3.0.2",
     "typescript": "^4.8.4"
   }
 }
