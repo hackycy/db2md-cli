@@ -18,13 +18,10 @@ node_modules/
 
 # Optional eslint cache
 .eslintcache
+!.eslintrc.js
 
 # build / generate output
-bin/**/*.js
-bin/**/*.d.ts
-bin/**/*.js.map
-bin/**/*d.ts.map
-lib/**/*.js
-lib/**/*.d.ts
-lib/**/*.js.map
-lib/**/*d.ts.map
+*.js
+*.d.ts
+*.js.map
+*.d.ts.map

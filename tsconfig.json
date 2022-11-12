@@ -9,6 +9,6 @@
     "strict": true,
     "useUnknownInCatchVariables": false
   },
-  "include": ["bin", "lib"],
+  "include": ["bin", "lib", "commands", "actions"],
   "exclude": ["node_modules"]
 }
