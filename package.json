@@ -1,9 +1,9 @@
 {
-  "name": "sql2md-cli",
+  "name": "db2md-cli",
   "version": "0.0.1",
   "description": "sql to markdown tool",
   "bin": {
-    "sql2md": "./bin/cli.js"
+    "db2md": "./bin/cli.js"
   },
   "scripts": {
     "build": "tsc"
