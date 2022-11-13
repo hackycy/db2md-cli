@@ -1,6 +1,6 @@
 import { Command } from 'commander';
-import { GenerateAction } from '../../actions/generate.action';
-import { GenerateCommand } from '../../commands/generate.command';
+import { GenerateAction } from '../actions';
+import { GenerateCommand } from './generate.command';
 
 export class CommandLoader {
   static load(program: Command): void {
@@ -11,7 +11,7 @@ export class CommandLoader {
 
   private static handleInvalidCommand(program: Command) {
     program.on('command:*', () => {
-      console.error('\nError Invalid command: %s', program.args.join(' '));
+      console.error('\nError invalid command: %s', program.args.join(' '));
       console.log('See --help for a list of available commands.\n');
       process.exit(1);
     });
