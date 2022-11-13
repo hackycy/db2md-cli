@@ -32,12 +32,12 @@ export class DBDataSource {
     });
   }
 
-  public async query<T = any>(sql: string): Promise<T> {
+  public async query<T = any>(sql: string, args: any[] = []): Promise<T> {
     if (!this.connection) {
       throw new Error('Mysql Connection initialization is not complete');
     }
 
-    const [rows] = await this.connection.execute(sql);
+    const [rows] = await this.connection.execute(sql, args);
     return rows as T;
   }
 

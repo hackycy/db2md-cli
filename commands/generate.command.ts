@@ -1,7 +1,6 @@
 import { Command } from 'commander';
 import { AbstractCommand } from '../lib/common/abstract.command';
 import { Input } from '../lib/common/command.input';
-import { DBDataSource } from '../lib/utils/db.datasource';
 
 export class GenerateCommand extends AbstractCommand {
   public load(program: Command): void {
@@ -23,11 +22,7 @@ export class GenerateCommand extends AbstractCommand {
         options.push({ name: 'password', value: opts.password });
         options.push({ name: 'port', value: opts.port });
 
-        try {
-          await this.action.handle(inputs, options);
-        } finally {
-          DBDataSource.getInstance().destroy();
-        }
+        await this.action.handle(inputs, options);
       });
   }
 }

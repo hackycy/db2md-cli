@@ -15,15 +15,14 @@ module.exports = {
     node: true,
     jest: true,
   },
-  ignorePatterns: ['node_modules', 'dist', '*.js', '*.d.ts'],
+  ignorePatterns: ['node_modules', '*.js', '*.d.ts'],
   rules: {
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-var-requires': 'off',
-
-    // custom
+    '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-unused-vars': [
       'warn',
       {
