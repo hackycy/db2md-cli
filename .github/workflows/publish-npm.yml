@@ -4,27 +4,28 @@ on:
   release:
     types: [created]
 
-publish:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v3
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        registry-url: https://registry.npmjs.com/
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.com/
 
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
 
-    - name: Get version
-      run: echo "TAG_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Get version
+        run: echo "TAG_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
-    - name: Get git head
-      run: echo "GIT_HEAD=${GITHUB_SHA}" >> $GITHUB_ENV
+      - name: Get git head
+        run: echo "GIT_HEAD=${GITHUB_SHA}" >> $GITHUB_ENV
 
-    - name: Gen npmrc
-      run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" >> ./.npmrc
+      - name: Gen npmrc
+        run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" >> ./.npmrc
 
-    - name: Build & publish
-      run: pnpm clean && pnpm build && pnpm publish:npm
+      - name: Build & publish
+        run: pnpm clean && pnpm build && pnpm publish:npm
