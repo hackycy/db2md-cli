@@ -68,13 +68,21 @@ export class DescWriter extends AbstractWriter {
       text.push(['', ...indexdTitles, ''].join('|'));
       text.push(['', ...indexdTitles.map(() => ':---:'), ''].join('|'));
       indexd.forEach((c) => {
-        const values = indexdKeys.map((k) => c[k]);
+        const values = indexdKeys.map((k) => {
+          if (k === 'nonunique') {
+            return c[k] === 0 ? 'YES' : 'NO';
+          } else if (k === 'nullable') {
+            return c[k] === 'YES' ? 'YES' : 'NO';
+          }
+
+          return c[k];
+        });
         text.push(['', ...values, ''].join('|'));
       });
     }
 
     // new line
-    text.push(...['', '']);
+    text.push('');
 
     this.stream.write(text.join('\n'));
   }

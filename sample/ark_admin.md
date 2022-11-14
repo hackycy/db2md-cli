@@ -42,9 +42,8 @@
 
 |键名|类型|唯一|字段|基数|排序规则|空|注释|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|PRIMARY|BTREE|0|id|2|A|||
-|unique_key|BTREE|0|unique_key|2|A|||
-
+|PRIMARY|BTREE|YES|id|2|A|NO||
+|unique_key|BTREE|YES|unique_key|2|A|NO||
 
 ## sys_dictionary[↑](#返回顶部)<a name="sys_dictionary"></a>
 
@@ -68,9 +67,8 @@
 
 |键名|类型|唯一|字段|基数|排序规则|空|注释|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|PRIMARY|BTREE|0|id|4|A|||
-|unique_key|BTREE|0|unique_key|4|A|||
-
+|PRIMARY|BTREE|YES|id|4|A|NO||
+|unique_key|BTREE|YES|unique_key|4|A|NO||
 
 ## sys_job[↑](#返回顶部)<a name="sys_job"></a>
 
@@ -89,9 +87,8 @@
 
 |键名|类型|唯一|字段|基数|排序规则|空|注释|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|PRIMARY|BTREE|0|id|3|A|||
-|name|BTREE|0|name|3|A|||
-
+|PRIMARY|BTREE|YES|id|3|A|NO||
+|name|BTREE|YES|name|3|A|NO||
 
 ## sys_log[↑](#返回顶部)<a name="sys_log"></a>
 
@@ -113,8 +110,7 @@
 
 |键名|类型|唯一|字段|基数|排序规则|空|注释|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|PRIMARY|BTREE|0|id|6|A|||
-
+|PRIMARY|BTREE|YES|id|6|A|NO||
 
 ## sys_perm_menu[↑](#返回顶部)<a name="sys_perm_menu"></a>
 
@@ -140,8 +136,7 @@
 
 |键名|类型|唯一|字段|基数|排序规则|空|注释|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|PRIMARY|BTREE|0|id|46|A|||
-
+|PRIMARY|BTREE|YES|id|46|A|NO||
 
 ## sys_profession[↑](#返回顶部)<a name="sys_profession"></a>
 
@@ -160,9 +155,8 @@
 
 |键名|类型|唯一|字段|基数|排序规则|空|注释|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|PRIMARY|BTREE|0|id|2|A|||
-|name|BTREE|0|name|2|A|||
-
+|PRIMARY|BTREE|YES|id|2|A|NO||
+|name|BTREE|YES|name|2|A|NO||
 
 ## sys_role[↑](#返回顶部)<a name="sys_role"></a>
 
@@ -185,9 +179,8 @@
 
 |键名|类型|唯一|字段|基数|排序规则|空|注释|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|PRIMARY|BTREE|0|id|2|A|||
-|unique_key|BTREE|0|unique_key|2|A|||
-
+|PRIMARY|BTREE|YES|id|2|A|NO||
+|unique_key|BTREE|YES|unique_key|2|A|NO||
 
 ## sys_user[↑](#返回顶部)<a name="sys_user"></a>
 
@@ -218,6 +211,5 @@
 
 |键名|类型|唯一|字段|基数|排序规则|空|注释|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|PRIMARY|BTREE|0|id|2|A|||
-|account|BTREE|0|account|2|A|||
-
+|PRIMARY|BTREE|YES|id|2|A|NO||
+|account|BTREE|YES|account|2|A|NO||
