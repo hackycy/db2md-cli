@@ -9,7 +9,8 @@
 Makefile
 node_modules/
 .DS_Store
-CONTRIBUTE.md
+*.md
+!README.md
 
 # source
 **/*.ts
