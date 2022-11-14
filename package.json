@@ -1,7 +1,8 @@
 {
   "name": "db2md-cli",
   "version": "0.0.2",
-  "description": "sql to markdown tool",
+  "packageManager": "pnpm@7.15.0",
+  "description": "database to markdown tool",
   "bin": {
     "db2md": "bin/db2md.js"
   },
