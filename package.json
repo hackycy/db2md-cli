@@ -11,7 +11,7 @@
     "start": "node bin/db2md.js",
     "lint": "eslint {lib,bin,actions,commands}/**/*.ts --fix",
     "clean": "rimraf {lib,bin,actions,commands}/**/*.{js,d.ts,js.map,d.ts.map}",
-    "publish:npm": "npm publish --access public"
+    "publish:npm": "npm publish"
   },
   "keywords": [
     "cli",
@@ -29,6 +29,9 @@
   "homepage": "https://github.com/hackycy/db2md-cli#readme",
   "author": "hackycy",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^16.14.0",
