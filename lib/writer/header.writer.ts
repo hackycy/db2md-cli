@@ -3,7 +3,7 @@ import { AbstractWriter } from '../common/abstract.writer';
 export class HeaderWriter extends AbstractWriter {
   public async write(
     title: string,
-    level: 1 | 2,
+    level: 1 | 2 | 3 | 4 | 5 | 6,
     newLine = false,
     subTitle?: string,
   ): Promise<void> {

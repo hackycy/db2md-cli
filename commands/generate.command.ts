@@ -23,6 +23,7 @@ export class GenerateCommand extends AbstractCommand {
         options.push({ name: 'password', value: opts.password });
         options.push({ name: 'port', value: opts.port });
         options.push({ name: 'output', value: opts.output });
+        options.push({ name: 'level', value: opts.level });
 
         await this.action.handle(inputs, options);
       });

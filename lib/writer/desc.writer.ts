@@ -1,20 +1,11 @@
 import { AbstractWriter } from '../common/abstract.writer';
 import { ColumnsExecutor, ColumnsRowData, TablesRowData } from '../executor';
 
-const titles = [
-  '字段名',
-  '数据类型',
-  '索引',
-  '额外信息',
-  '允许空',
-  '默认值',
-  '字段说明',
-];
+const titles = ['字段名', '数据类型', '额外信息', '空', '默认值', '注释'];
 
 const keys: (keyof ColumnsRowData)[] = [
   'name',
   'type',
-  'key',
   'extra',
   'isNullable',
   'defaultValue',
@@ -29,12 +20,6 @@ export class DescWriter extends AbstractWriter {
     ).exec<ColumnsRowData>();
 
     const text: string[] = [];
-
-    // link
-    text.push(...[`<a name="${table.name}"></a>`, '']);
-
-    // title
-    text.push(...[`* ${table.name}(${table.comment})[↑](#返回顶部)`, '']);
 
     // content
     text.push(['', ...titles, ''].join('|'));

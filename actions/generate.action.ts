@@ -65,27 +65,32 @@ export class GenerateAction extends AbstractAction {
 
       // docs header
       await headerWriter.write(
-        '数据库文档',
+        `${database}数据库文档`,
         1,
         false,
         '<a name="返回顶部"></a>',
       );
 
       // docs outline
-      await headerWriter.write('数据表大纲', 2);
+      await headerWriter.write('大纲', 2);
       await new OutlineWriter(sb).write(tables);
 
-      // table desc
-      await headerWriter.write('数据表详情', 2, true);
-
+      // tables
       for (let i = 0; i < tables.length; i++) {
+        await headerWriter.write(
+          `${tables[i].name}[↑](#返回顶部)<a name="${tables[i].name}"></a>`,
+          2,
+          true,
+          tables[i].comment ? `> 表注释: ${tables[i].comment}` : undefined,
+        );
+
         await new DescWriter(sb).write(database, tables[i]);
       }
 
       // writing end
       sb.end();
 
-      console.log('Document generated!');
+      console.log('√ Document generated!');
     } finally {
       // destroy connection
       DBDataSource.getInstance().destroy();

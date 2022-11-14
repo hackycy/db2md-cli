@@ -6,8 +6,9 @@ export class OutlineWriter extends AbstractWriter {
     const outline: string[] = [];
 
     tables.forEach((e) => {
-      outline.push(`* [${e.name}(${e.comment})](#${e.name})`);
-      outline.push('');
+      const title = `* [${e.name}](#${e.name})`;
+
+      outline.push(...[title, '']);
     });
 
     this.stream.write([...outline].join('\n'));
