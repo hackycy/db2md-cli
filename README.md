@@ -24,7 +24,7 @@ Options:
   --help                       Output usage information.
 ```
 
-**案例**
+案例
 
 ``` sh
 db2md g -u root -p 3306 -pwd root -h 127.0.0.1 ark_admin
