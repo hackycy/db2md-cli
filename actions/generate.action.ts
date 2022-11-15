@@ -48,8 +48,10 @@ export class GenerateAction extends AbstractAction {
 
       // handle gen path
       let path = process.cwd();
-      if (isString(path) && path) {
-        path = output.startsWith('.') ? resolve(process.cwd(), output) : output;
+
+      if (isString(output) && output) {
+        // handle relative path
+        path = output.startsWith('.') ? resolve(path, output) : output;
 
         // ensure dir created
         ensureDirSync(path);
