@@ -30,4 +30,5 @@ Options:
 db2md g -u root -p 3306 -pwd root -h 127.0.0.1 ark_admin
 ```
 
-> 使用root用户密码为root连接ark_admin数据库生成文档, 生成示例请查看[sample](https://github.com/hackycy/db2md-cli/blob/main/sample)
+> 使用root用户密码为root连接ark_admin数据库生成文档, 默认会在当前路径下生成`数据库名称.md`. 
+> 生成示例请查看[sample](https://github.com/hackycy/db2md-cli/blob/main/sample)
