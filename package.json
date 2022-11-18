@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "commander": "^9.4.1",
+    "docx": "^7.7.0",
     "fs-extra": "^10.1.0",
     "mysql2": "^2.3.3"
   }
