@@ -6,39 +6,7 @@ import {
   IndexdRowData,
   TablesRowData,
 } from '../executor';
-
-const colTitles = ['字段', '类型', '空', '默认值', 'EXTRA', '注释'];
-
-const colKeys: (keyof ColumnsRowData)[] = [
-  'name',
-  'type',
-  'isNullable',
-  'defaultValue',
-  'extra',
-  'comment',
-];
-
-const indexdTitles = [
-  '键名',
-  '类型',
-  '唯一',
-  '字段',
-  '基数',
-  '排序规则',
-  '空',
-  '注释',
-];
-
-const indexdKeys: (keyof IndexdRowData)[] = [
-  'indexName',
-  'type',
-  'nonunique',
-  'colName',
-  'cardinality',
-  'collation',
-  'nullable',
-  'comment',
-];
+import { colTitles, colKeys, indexdKeys, indexdTitles } from '../ui/table';
 
 export class DescWriter extends AbstractWriter {
   public async write(db: string, table: TablesRowData): Promise<void> {
