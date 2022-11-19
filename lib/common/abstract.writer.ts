@@ -1,7 +1,7 @@
 import { WriteStream } from 'fs';
 
 export abstract class AbstractWriter {
-  constructor(protected stream: WriteStream) {}
+  constructor(protected stream: WriteStream, protected database: string) {}
 
-  public abstract write(...args: any[]): Promise<void>;
+  public abstract write(): Promise<void>;
 }
