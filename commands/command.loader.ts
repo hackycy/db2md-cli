@@ -6,6 +6,12 @@ export class CommandLoader {
   static load(program: Command): void {
     new GenerateCommand(new GenerateAction()).load(program);
 
+    // 判断是否是debug模式
+    program.option('-d, --debug', 'Open debug mode', false);
+    program.on('option:debug', function (this: Command) {
+      process.env.DEBUG = this.opts().debug;
+    });
+
     this.handleInvalidCommand(program);
   }
 

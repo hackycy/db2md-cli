@@ -1,5 +1,5 @@
 import { createConnection, Connection } from 'mysql2/promise';
-import { MysqlConfiguration } from '../configuration/configuration';
+import { ConnectionOptions } from 'mysql2';
 
 export class DBDataSource {
   private static _instance: DBDataSource;
@@ -20,16 +20,10 @@ export class DBDataSource {
   /**
    * prepare mysql connection
    */
-  public async init(conf: MysqlConfiguration): Promise<void> {
+  public async init(conf: ConnectionOptions): Promise<void> {
     if (this.connection) return;
 
-    this.connection = await createConnection({
-      user: conf.username,
-      port: Number(conf.port),
-      host: conf.host,
-      password: conf.password,
-      database: conf.database,
-    });
+    this.connection = await createConnection(conf);
   }
 
   public async query<T = any>(sql: string, args: any[] = []): Promise<T> {
