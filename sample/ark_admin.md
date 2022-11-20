@@ -2,8 +2,6 @@
 
 <a name="返回顶部"></a>
 
-## 大纲
-
 * [sys_dept](#sys_dept)
 
 * [sys_dictionary](#sys_dictionary)
@@ -20,7 +18,9 @@
 
 * [sys_user](#sys_user)
 
-## sys_dept[↑](#返回顶部)<a name="sys_dept"></a>
+## sys_dept
+
+<a name="sys_dept"></a>
 
 > 表注释: 部门
 
@@ -45,7 +45,9 @@
 |PRIMARY|BTREE|YES|id|2|A|NO||
 |unique_key|BTREE|YES|unique_key|2|A|NO||
 
-## sys_dictionary[↑](#返回顶部)<a name="sys_dictionary"></a>
+## sys_dictionary
+
+<a name="sys_dictionary"></a>
 
 > 表注释: 系统参数
 
@@ -70,7 +72,9 @@
 |PRIMARY|BTREE|YES|id|4|A|NO||
 |unique_key|BTREE|YES|unique_key|4|A|NO||
 
-## sys_job[↑](#返回顶部)<a name="sys_job"></a>
+## sys_job
+
+<a name="sys_job"></a>
 
 > 表注释: 工作岗位
 
@@ -90,7 +94,9 @@
 |PRIMARY|BTREE|YES|id|3|A|NO||
 |name|BTREE|YES|name|3|A|NO||
 
-## sys_log[↑](#返回顶部)<a name="sys_log"></a>
+## sys_log
+
+<a name="sys_log"></a>
 
 > 表注释: 系统日志
 
@@ -110,9 +116,11 @@
 
 |键名|类型|唯一|字段|基数|排序规则|空|注释|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|PRIMARY|BTREE|YES|id|6|A|NO||
+|PRIMARY|BTREE|YES|id|10|A|NO||
 
-## sys_perm_menu[↑](#返回顶部)<a name="sys_perm_menu"></a>
+## sys_perm_menu
+
+<a name="sys_perm_menu"></a>
 
 > 表注释: 权限&菜单
 
@@ -138,7 +146,9 @@
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |PRIMARY|BTREE|YES|id|46|A|NO||
 
-## sys_profession[↑](#返回顶部)<a name="sys_profession"></a>
+## sys_profession
+
+<a name="sys_profession"></a>
 
 > 表注释: 职称
 
@@ -158,7 +168,9 @@
 |PRIMARY|BTREE|YES|id|2|A|NO||
 |name|BTREE|YES|name|2|A|NO||
 
-## sys_role[↑](#返回顶部)<a name="sys_role"></a>
+## sys_role
+
+<a name="sys_role"></a>
 
 > 表注释: 角色
 
@@ -182,7 +194,9 @@
 |PRIMARY|BTREE|YES|id|2|A|NO||
 |unique_key|BTREE|YES|unique_key|2|A|NO||
 
-## sys_user[↑](#返回顶部)<a name="sys_user"></a>
+## sys_user
+
+<a name="sys_user"></a>
 
 > 表注释: 用户
 
