@@ -31,7 +31,7 @@ export class GenerateCommand extends AbstractCommand {
         '-o, --output [output]',
         'Document generation path, support for relative path',
       )
-      .option('-f, --force', 'overwrite target file if it exists', false)
+      .option('-f, --force', 'Overwrite target file if it exists', false)
       .action(
         async (database: string, type: string, opts: Record<string, any>) => {
           const inputs: Input[] = [];
