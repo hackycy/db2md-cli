@@ -1,6 +1,6 @@
 # db2md-cli
 
-> MySQL数据库文档生成工具,支持生成`markdown`以及`word`文档
+> MySQL数据库文档生成工具, 支持生成`markdown`以及`word`文档
 
 ## 安装
 
@@ -36,5 +36,7 @@ Options:
 db2md g -u root -p 3306 -P root -H 127.0.0.1 ark_admin md
 ```
 
-> 使用`root`用户, 密码为`root`连接`ark_admin`数据库生成`markdown`文档, 默认会在当前路径下生成`数据库名称.md`. 如需生成`word`文档则将`md`替换为`docx`
+> 使用`root`用户, 密码为`root`连接`ark_admin`数据库生成`markdown`文档, 默认会在当前路径下生成`数据库名称.md`. 
+>
+> 如需生成`word`文档则将`md`替换为`docx`
 
