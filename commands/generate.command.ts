@@ -19,7 +19,7 @@ export class GenerateCommand extends AbstractCommand {
         checkTypeValidity,
       )
       .option('-P, --password [password]', 'Database password', 'root')
-      .option('-h, --host [host]', 'Database host', '127.0.0.1')
+      .option('-H, --host [host]', 'Database host', '127.0.0.1')
       .option('-u, --username [username]', 'Database username', 'root')
       .option<number>(
         '-p, --port [port]',
