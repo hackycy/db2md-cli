@@ -2,9 +2,14 @@ import { createWriteStream } from 'fs';
 import { join, resolve } from 'path';
 import { AbstractAction } from '../lib/common/abstract.action';
 import { Input } from '../lib/common/command.input';
-import { VersionExecutor, VersionRowData } from '../lib/executor';
+import {
+  TablesExecutor,
+  TablesRowData,
+  VersionExecutor,
+  VersionRowData,
+} from '../lib/executor';
 import { DBDataSource } from '../lib/utils/db.datasource';
-import { isString } from '../lib/utils/is';
+import { isDebug, isString } from '../lib/utils/is';
 import { ensureDirSync, existsSync } from 'fs-extra';
 import * as inquirer from 'inquirer';
 import { DocType, DocTypeList } from '../lib/constants/doc-type';
@@ -77,6 +82,10 @@ export class GenerateAction extends AbstractAction {
         }
       }
 
+      console.log('\nLooking for all tables in the database:');
+      const tables = await new TablesExecutor(database).exec<TablesRowData>();
+      isDebug() && console.table(tables);
+
       // 创建流
       const sb = createWriteStream(filePath, {
         start: 0,
@@ -86,9 +95,9 @@ export class GenerateAction extends AbstractAction {
       // 处理文档内容
       let writer: AbstractWriter | null = null;
       if (docType === 'docx') {
-        writer = new DocxWriter(sb, database);
+        writer = new DocxWriter(sb, database, tables);
       } else {
-        writer = new MarkdownWriter(sb, database);
+        writer = new MarkdownWriter(sb, database, tables);
       }
       await writer.write();
 

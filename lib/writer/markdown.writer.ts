@@ -4,7 +4,6 @@ import {
   ColumnsRowData,
   IndexdExecutor,
   IndexdRowData,
-  TablesExecutor,
   TablesRowData,
 } from '../executor';
 import {
@@ -16,42 +15,42 @@ import {
 
 export class MarkdownWriter extends AbstractWriter {
   async write(): Promise<void> {
-    console.log('\nLooking for all tables in the database:');
-    const tables = await new TablesExecutor(
-      this.database,
-    ).exec<TablesRowData>();
-    console.table(tables);
-
     // title
-    await this.writeTitle(
-      `${this.database}数据库文档`,
-      1,
-      false,
-      '<a name="返回顶部"></a>',
+    this.stream.write(
+      this.createTitle(
+        `${this.database}数据库文档`,
+        1,
+        false,
+        '<a name="返回顶部"></a>',
+      ),
     );
 
     // outline
-    await this.writeOutline(tables);
+    this.stream.write(this.writeOutline(this.tables));
 
     // tables
-    for (let i = 0; i < tables.length; i++) {
-      await this.writeTitle(
-        `${tables[i].name}[↑](#返回顶部)<a name="${tables[i].name}"></a>`,
-        2,
-        true,
-        tables[i].comment ? `> 表注释: ${tables[i].comment}` : undefined,
+    for (let i = 0; i < this.tables.length; i++) {
+      this.stream.write(
+        this.createTitle(
+          `${this.tables[i].name}[↑](#返回顶部)<a name="${this.tables[i].name}"></a>`,
+          2,
+          true,
+          this.tables[i].comment
+            ? `> 表注释: ${this.tables[i].comment}`
+            : undefined,
+        ),
       );
 
-      await this.writeTable(tables[i]);
+      this.stream.write(await this.createTable(this.tables[i]));
     }
   }
 
-  private async writeTitle(
+  protected createTitle(
     title: string,
     level: 1 | 2 | 3 | 4 | 5 | 6,
     newLine = false,
     subTitle?: string,
-  ) {
+  ): string {
     const text: string[] = [];
 
     if (newLine) {
@@ -66,10 +65,10 @@ export class MarkdownWriter extends AbstractWriter {
 
     text.push('');
 
-    this.stream.write(text.join('\n'));
+    return text.join('\n');
   }
 
-  private async writeOutline(tables: TablesRowData[]) {
+  protected writeOutline(tables: TablesRowData[]): string {
     const outline: string[] = [];
 
     tables.forEach((e) => {
@@ -78,10 +77,10 @@ export class MarkdownWriter extends AbstractWriter {
       outline.push(...[title, '']);
     });
 
-    this.stream.write([...outline].join('\n'));
+    return [...outline].join('\n');
   }
 
-  private async writeTable(table: TablesRowData) {
+  protected async createTable(table: TablesRowData): Promise<string> {
     const text: string[] = [];
 
     // columns
@@ -124,6 +123,6 @@ export class MarkdownWriter extends AbstractWriter {
     // new line
     text.push('');
 
-    this.stream.write(text.join('\n'));
+    return text.join('\n');
   }
 }

@@ -11,3 +11,7 @@ export function isString(val: unknown): val is string {
 export function isBoolean(val: unknown): val is boolean {
   return is(val, 'Boolean');
 }
+
+export function isDebug(): boolean {
+  return !!process.env.DEBUG;
+}
