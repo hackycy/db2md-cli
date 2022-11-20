@@ -16,32 +16,34 @@ import {
 export class MarkdownWriter extends AbstractWriter {
   async write(): Promise<void> {
     // title
-    this.stream.write(
-      this.createTitle(
-        `${this.database}数据库文档`,
-        1,
-        false,
-        '<a name="返回顶部"></a>',
-      ),
+    const docTitle = this.createTitle(
+      `${this.database}数据库文档`,
+      1,
+      false,
+      '<a name="返回顶部"></a>',
     );
+    this.stream.write(docTitle);
 
     // outline
-    this.stream.write(this.writeOutline(this.tables));
+    const docOutline = this.createOutline(this.tables);
+    this.stream.write(docOutline);
 
     // tables
     for (let i = 0; i < this.tables.length; i++) {
-      this.stream.write(
-        this.createTitle(
-          `${this.tables[i].name}[↑](#返回顶部)<a name="${this.tables[i].name}"></a>`,
-          2,
-          true,
-          this.tables[i].comment
-            ? `> 表注释: ${this.tables[i].comment}`
-            : undefined,
+      const tableTitle = this.createTitle(
+        [this.tables[i].name, '', `<a name="${this.tables[i].name}"></a>`].join(
+          '\n',
         ),
+        2,
+        true,
+        this.tables[i].comment
+          ? `> 表注释: ${this.tables[i].comment}`
+          : undefined,
       );
+      this.stream.write(tableTitle);
 
-      this.stream.write(await this.createTable(this.tables[i]));
+      const tableDesc = await this.createTable(this.tables[i]);
+      this.stream.write(tableDesc);
     }
   }
 
@@ -68,7 +70,7 @@ export class MarkdownWriter extends AbstractWriter {
     return text.join('\n');
   }
 
-  protected writeOutline(tables: TablesRowData[]): string {
+  protected createOutline(tables: TablesRowData[]): string {
     const outline: string[] = [];
 
     tables.forEach((e) => {
