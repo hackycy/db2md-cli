@@ -26,6 +26,7 @@ import {
   indexdKeys,
   indexdTitles,
 } from '../constants/table';
+import { formatterIndexColValue } from '../utils/formatter';
 
 export class DocxWriter extends AbstractWriter {
   async write(): Promise<void> {
@@ -117,21 +118,13 @@ export class DocxWriter extends AbstractWriter {
     const rows: TableRow[] = indexd.map((c) => {
       return new TableRow({
         children: indexdKeys.map((k) => {
-          let value = c[k];
-
-          if (k === 'nonunique') {
-            value = c[k] === 0 ? 'YES' : 'NO';
-          } else if (k === 'nullable') {
-            value = c[k] === 'YES' ? 'YES' : 'NO';
-          }
-
           return new TableCell({
             verticalAlign: VerticalAlign.CENTER,
             children: [
               new Paragraph({
                 children: [
                   new TextRun({
-                    text: value as string,
+                    text: formatterIndexColValue(c, k),
                   }),
                 ],
                 alignment: AlignmentType.CENTER,

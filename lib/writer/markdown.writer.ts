@@ -12,6 +12,7 @@ import {
   indexdKeys,
   indexdTitles,
 } from '../constants/table';
+import { formatterIndexColValue } from '../utils/formatter';
 
 export class MarkdownWriter extends AbstractWriter {
   async write(): Promise<void> {
@@ -109,15 +110,7 @@ export class MarkdownWriter extends AbstractWriter {
       text.push(['', ...indexdTitles, ''].join('|'));
       text.push(['', ...indexdTitles.map(() => ':---:'), ''].join('|'));
       indexd.forEach((c) => {
-        const values = indexdKeys.map((k) => {
-          if (k === 'nonunique') {
-            return c[k] === 0 ? 'YES' : 'NO';
-          } else if (k === 'nullable') {
-            return c[k] === 'YES' ? 'YES' : 'NO';
-          }
-
-          return c[k];
-        });
+        const values = indexdKeys.map((k) => formatterIndexColValue(c, k));
         text.push(['', ...values, ''].join('|'));
       });
     }
