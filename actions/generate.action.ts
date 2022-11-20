@@ -82,8 +82,14 @@ export class GenerateAction extends AbstractAction {
         }
       }
 
-      console.log('\nLooking for all tables in the database:');
+      console.log('\nLooking for all tables in the database...');
       const tables = await new TablesExecutor(database).exec<TablesRowData>();
+
+      if (tables.length <= 0) {
+        console.log('\nTable is empty, no documents need to be generated!');
+        process.exit(1);
+      }
+
       isDebug() && console.table(tables);
 
       // 创建流
