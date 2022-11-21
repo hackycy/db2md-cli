@@ -23,6 +23,7 @@ import {
 import {
   colKeys,
   colTitles,
+  docxTableColor,
   indexdKeys,
   indexdTitles,
 } from '../constants/table';
@@ -54,7 +55,7 @@ export class DocxWriter extends AbstractWriter {
             children: [
               new TextRun({
                 text: `表注释: ${comment}`,
-                color: '#24292f',
+                color: docxTableColor.text_color_heading_2,
               }),
             ],
           }),

@@ -32,3 +32,7 @@ export const indexdKeys: (keyof IndexdRowData)[] = [
   'nullable',
   'comment',
 ];
+
+export const docxTableColor = {
+  text_color_heading_2: '#57606a',
+};
